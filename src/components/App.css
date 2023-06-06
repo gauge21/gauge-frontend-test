@@ -1,0 +1,21 @@
+h1 {
+    color: #3d3d3d;
+    text-align: center;
+}
+
+ul {
+    list-style-type: none;  
+}
+
+li.half {
+    float: left;
+    clear: none;
+}
+
+li.half:first-child {
+    margin-left: 0;
+}
+
+.submit-button {
+    margin-bottom: 10%;
+}
