@@ -1,0 +1,125 @@
+.content {
+    text-align: center;
+}
+
+h1,p {
+    margin: 0px; 
+    font-family:'Roboto',sans-serif;
+    display: inline-block;
+}
+
+h1 {
+    margin-bottom: 10px; 
+}
+
+p {
+    margin-bottom: 0; 
+}
+
+.gauge {
+    width: 100%; 
+    margin-top: 20px; 
+    margin-bottom: 20px; 
+    max-width: 300px; 
+    position: relative; 
+    left: 50%; 
+    transform: translateX(-50%);
+    font-family: 'Roboto', sans-serif; 
+    font-size: 32px; 
+}
+
+.gauge__body {
+    width: 100%; 
+    height: 0; 
+    padding-bottom: 50%;
+    background: black; 
+    position: relative; 
+    border-top-left-radius: 100% 200%;
+    border-top-right-radius: 100% 200%; 
+    overflow: hidden;
+}
+
+.gauge__fill {
+    position: absolute; 
+    top: 100%; 
+    left: 0; 
+    width: inherit; 
+    height: 100%; 
+    background: #04AA6D; 
+    transform-origin: center top;
+    transform: rotate(0.25turn); 
+    transition: transform 0.2s ease-out; 
+}
+
+.gauge__cover {
+    width: 75%; 
+    height: 150%; 
+    position: absolute; 
+    border-radius: 50%; 
+    top: 25%; 
+    left: 50%; 
+    transform: translateX(-50%); 
+    background: white; 
+    display: flex; /* for text */ 
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 25%; 
+    box-sizing: border-box;
+}
+
+.submitbutton {
+    padding: 0.6em 2.4em;
+    margin: 0 0.2em 0.2em 0;
+    border-radius: 2em;
+    font-family:'Roboto',sans-serif;
+    font-weight: 300;
+    color:#FFFFFF;
+    background-color:#04AA6D;
+    border-color: #04AA6D;
+    border-style: solid; 
+    text-align:center;
+    transition: all 0.2s;
+    box-shadow: none;
+}
+
+.submitbutton:hover {
+    border-color: #08d187;
+    background-color: #08d187;
+}
+
+.form {
+    text-align: center; 
+}
+
+#Name, #Name:focus {
+    background-color: inherit;
+    font-size: 16px; 
+    font-family:'Roboto',sans-serif;
+    text-align: center;
+    padding: 1px; 
+    border: none; 
+    border-bottom-style: solid; 
+    border-bottom-color: #bebebe; 
+    border-bottom-width: 1px;
+    outline: none;   
+    display: inline-block;
+    margin-left: 5px; 
+}
+
+.nameinput {
+    display: inline-block; 
+}
+
+.gauge__dial {
+    position: absolute; 
+    padding-bottom: 15%;
+    height: 40%;
+    transform-origin: center bottom;
+    transform: rotate(-0.25turn); 
+    transition: transform 0.2s ; 
+    -webkit-user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
