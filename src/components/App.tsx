@@ -378,7 +378,7 @@ class App extends React.Component<IGaugeAppProps, MyState> {
   
         <h1>Daily Status</h1>
   
-        <form action="" onSubmit={this.handleSubmit2}>
+        <form action="" onSubmit={this.handleSubmit}>
   
           <div className="nameinput">
             <p> Hello </p>
