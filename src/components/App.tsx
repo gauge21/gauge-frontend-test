@@ -5,11 +5,12 @@ import actualDial from './images/DialLarge.png'
 import * as $ from "jquery"
 import { Line, Bar } from "react-chartjs-2"
 import './style.css'
+import axios, { AxiosResponse } from 'axios';
+
 
 
 //issue with scss 
 // import './GaugeApp.module.scss'
-
 
 
 Chart.register(CategoryScale)
@@ -82,7 +83,7 @@ class App extends React.Component<IGaugeAppProps, MyState> {
   }
 
   private changeRotation(event:any) {
-    if (this.state.hover == true) {
+    if (this.state.hover === true) {
       let pos = (this.myRef.current.getBoundingClientRect());
       let centerY = pos['y'] + pos['height'];
       let centerX = pos['x'] + pos['width'] / 2;
@@ -111,17 +112,45 @@ class App extends React.Component<IGaugeAppProps, MyState> {
     this.setState({ namelength: event.target.value.length });
   }
 
-  private handleSubmit(event:any) {
-    event.preventDefault();
-    //idk if this data sending still works
-    var formData = { Name: this.state.name, Emotion: Math.round(this.state.emotion) };
-    $.ajax({
-      contentType: 'application/json',
-      type: "POST",
-      url: "https://prod-25.canadacentral.logic.azure.com:443/workflows/c1b6486985c94f5784820815397ee551/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=sBPca7dSN_oK626edJuaAQBvPtRAKCvlg12vmcBDvBs",
-      data: JSON.stringify(formData),
+
+  private async handleSubmit(event: any) {
+    var settings = {
+      "url": "https://prod-20.canadacentral.logic.azure.com:443/workflows/21f3a6fbb57c42edb9afd96facc392d7/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=zIYk3io9aUYNMoD6xwG7q5j42zmht7HhwbAGEDM28O0",
+      "method": "POST",
+      "timeout": 0,
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "data": JSON.stringify({
+        "Daniel's Table": [
+          {
+            "name": "testGC02"
+          }
+        ]
+      }),
+    };
+    
+    $.ajax(settings).done(function (response) {
+      alert(response);
     });
-    alert("Done! Received: " + Math.round(this.state.emotion));
+
+
+
+    // try {
+    //   const response = await axios.post(
+    //     'https://prod-20.canadacentral.logic.azure.com:443/workflows/21f3a6fbb57c42edb9afd96facc392d7/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=zIYk3io9aUYNMoD6xwG7q5j42zmht7HhwbAGEDM28O0',
+    //     formData,
+    //     {
+    //       headers: {
+    //         'Content-Type': 'application/json',
+    //       },
+    //     }
+    //   );
+
+    //   alert('Done! Received: ' + Math.round(this.state.emotion));
+    // } catch (error) {
+    //   console.error('Error occurred:', error);
+    // }
   }
 
    //requires the dataverse package
@@ -378,7 +407,7 @@ class App extends React.Component<IGaugeAppProps, MyState> {
   
         <h1>Daily Status</h1>
   
-        <form action="" onSubmit={this.handleSubmit2}>
+        <form action="" onSubmit={this.handleSubmit}>
   
           <div className="nameinput">
             <p> Hello </p>
