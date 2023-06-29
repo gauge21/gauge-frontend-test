@@ -114,6 +114,7 @@ class App extends React.Component<IGaugeAppProps, MyState> {
 
 
   private async handleSubmit(event: any) {
+    var user = this.state.name;
     var settings = {
       "url": "https://prod-20.canadacentral.logic.azure.com:443/workflows/21f3a6fbb57c42edb9afd96facc392d7/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=zIYk3io9aUYNMoD6xwG7q5j42zmht7HhwbAGEDM28O0",
       "method": "POST",
@@ -124,7 +125,7 @@ class App extends React.Component<IGaugeAppProps, MyState> {
       "data": JSON.stringify({
         "Daniel's Table": [
           {
-            "name": "testGC02"
+            "name": user
           }
         ]
       }),
