@@ -403,52 +403,52 @@ class App extends React.Component<IGaugeAppProps, MyState> {
   //and is able to render the inputs from gauge 2021
   public render(): React.ReactElement{
     return (
-      <>
-      <div className="content" >
-  
-        <h1>Daily Status</h1>
-  
-        <form action="" onSubmit={this.handleSubmit}>
-  
-          <div className="nameinput">
-            <p> Hello </p>
-            <input type="text" id="Name" placeholder="What is your name?" value={this.state.name} onChange={this.changeName} style={{ width: this.state.namelength + "ch" }} required />
-            <p>! This is your personal tab! How are you feeling?</p>
-          </div>
-  
-          <div className="gauge" id="gaugeId">
-            <div className="gauge__body" ref={this.myRef} onMouseDown={this.changeHoverTrue} onMouseUp={this.changeHoverFalse} onMouseLeave={this.changeHoverFalse} onMouseMove={this.changeRotation}>
-              <div className="gauge__fill" style={{ transform: "rotate(" + (this.state.emotion / 200) + "turn)" }}> </div>
-              <div className="gauge__cover"> <img src = {actualDial} className = "gauge__dial" style={{ transform: "rotate(" + ((this.state.emotion / 200) - 0.25)  + "turn)" }}/></div>
+      <body>
+        <div className="content" onMouseMove={this._onMouseMove.bind(this)}>
+    
+          <h1>Daily Status</h1>
+    
+          <form action="" onSubmit={this.handleSubmit}>
+    
+            <div className="nameinput">
+              <p> Hello </p>
+              <input type="text" id="Name" placeholder="What is your name?" value={this.state.name} onChange={this.changeName} style={{ width: this.state.namelength + "ch" }} required />
+              <p>! This is your personal tab! How are you feeling?</p>
             </div>
-          </div>
-  
-          <div className="form">
-            <button className="submitbutton" type="submit">Submit</button>
-          </div>
-  
-        </form>
-      
-      </div>
-      <div>
-  
-        <h2> My Logbook </h2>
-        <Line
-          data={this.state.graph_data}
-        />
-  
-        <h2> Daily Average </h2>
-        <Line
-          data={this.state.average_graph_data}
-        />
-  
-        <h2> Highest Average Emotion Over Past Month </h2>
-        <Bar
-        data={this.state.highest_average_graph}
-        />
-  
-      </div>
-    </>
+    
+            <div className="gauge" id="gaugeId">
+              <div className="gauge__body" ref={this.myRef} onMouseDown={this.changeHoverTrue} onMouseUp={this.changeHoverFalse} onMouseLeave={this.changeHoverFalse} onMouseMove={this.changeRotation}>
+                <div className="gauge__fill" style={{ transform: "rotate(" + (this.state.emotion / 200) + "turn)" }}> </div>
+                <div className="gauge__cover"> <img src = {actualDial} className = "gauge__dial" style={{ transform: "rotate(" + ((this.state.emotion / 200) - 0.25)  + "turn)" }}/></div>
+              </div>
+            </div>
+    
+            <div className="form">
+              <button className="submitbutton" type="submit">Submit</button>
+            </div>
+    
+          </form>
+        
+        </div>
+        <div>
+    
+          <h2> My Logbook </h2>
+          <Line
+            data={this.state.graph_data}
+          />
+    
+          <h2> Daily Average </h2>
+          <Line
+            data={this.state.average_graph_data}
+          />
+    
+          <h2> Highest Average Emotion Over Past Month </h2>
+          <Bar
+          data={this.state.highest_average_graph}
+          />
+    
+        </div>
+    </body>
     )
   }
 }
