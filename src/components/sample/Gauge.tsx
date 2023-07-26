@@ -59,21 +59,23 @@ export default function Gauge() {
       const handleSubmit = async (event:any) => {
         event.preventDefault();
         var user = name;
+        var numValue = emotion;
         var settings = {
-          url: 'https://prod-20.canadacentral.logic.azure.com:443/workflows/21f3a6fbb57c42edb9afd96facc392d7/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=zIYk3io9aUYNMoD6xwG7q5j42zmht7HhwbAGEDM28O0',
-          method: 'POST',
-          timeout: 0,
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          data: JSON.stringify({
-            "Daniel's Table": [
-              {
-                name: user,
-              },
-            ],
-          }),
-        };
+            "url": "https://prod-20.canadacentral.logic.azure.com/workflows/21f3a6fbb57c42edb9afd96facc392d7/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=zIYk3io9aUYNMoD6xwG7q5j42zmht7HhwbAGEDM28O0",
+            "method": "POST",
+            "timeout": 0,
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "data": JSON.stringify({
+              "Daniel's Table": [
+                {
+                  "name": user,
+                  "numb value": numValue
+                }
+              ]
+            }),
+          };
     
       };
 
