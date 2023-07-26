@@ -19,5 +19,5 @@
   "include": [
     "src",
     "src/components/**/*.png"
-  ]
+, "src/components/sample/Charts.tsx", "placeholder/images"  ]
 }
