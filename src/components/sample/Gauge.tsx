@@ -1,15 +1,25 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import actualDial from './lib/images/DialLarge.png';
 import * as $ from "jquery";
+import { useData } from "@microsoft/teamsfx-react";
+import { TeamsFxContext } from "../Context";
 
 export default function Gauge() {
-    const [name, setName] = useState('');
+
     const [namelength, setNameLength] = useState(18);
     const [hover, setHover] = useState(false);
     const [x, setX] = useState(0);
     const [y, setY] = useState(0);
     const [emotion, setEmotion] = useState(0);
     
+    const { teamsUserCredential } = useContext(TeamsFxContext);
+    const { loading, data, error } = useData(async () => {
+      if (teamsUserCredential) {
+        const userInfo = await teamsUserCredential.getUserInfo();
+        return userInfo;
+      }
+    });
+    const userName = loading || error ? "" : data!.displayName;
 
     useEffect(() => {
         // componentDidMount equivalent
@@ -59,7 +69,7 @@ export default function Gauge() {
 
       const handleSubmit = async (event:any) => {
         event.preventDefault();
-        var user = name;
+        var user = userName;
         var numValue = emotion;
         var settings1 = {
           "url": "https://prod-20.canadacentral.logic.azure.com/workflows/21f3a6fbb57c42edb9afd96facc392d7/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=zIYk3io9aUYNMoD6xwG7q5j42zmht7HhwbAGEDM28O0",
@@ -102,10 +112,10 @@ export default function Gauge() {
       };
 
 
-      const changeName = (event:any) => {
-        setName(event.target.value);
-        setNameLength(event.target.value.length);
-      };
+      // const changeName = (event:any) => {
+      //   setName(event.target.value);
+      //   setNameLength(event.target.value.length);
+      // };
 
     return(
         <div className="content" onMouseMove={_onMouseMove}>
