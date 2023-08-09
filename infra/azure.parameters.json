@@ -7,6 +7,13 @@
       },
       "storageSku": {
         "value": "Standard_LRS"
+      },
+      "administratorLogin": {
+        "value": "azureuser"
+      },
+      "administratorLoginPassword": {
+        "value": "${{g@uge123}}"
       }
     }
+    
   }
