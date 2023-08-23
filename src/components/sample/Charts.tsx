@@ -1,7 +1,17 @@
-import { useState } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { Line, Bar } from "react-chartjs-2";
+import { fetchUserData } from '../../server/api-clients';
 
 export default function Charts() {
+
+  const [dataArray, setDataArray] = useState("")
+  
+  useEffect(() => {
+    fetchUserData().then((dataArray) => {
+      setDataArray(JSON.stringify(dataArray))
+    })
+  }, [])
+
     const [graphData, setGraphData] = useState({
         labels: [],
         datasets: [
@@ -41,6 +51,7 @@ export default function Charts() {
 
     return (
         <div>
+            <h1>{dataArray ?? "Placeholder"}</h1>
             <h2> My Logbook </h2>
             <Line data={graphData} />
             <h2> Daily Average </h2>

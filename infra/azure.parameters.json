@@ -9,10 +9,10 @@
         "value": "Standard_LRS"
       },
       "administratorLogin": {
-        "value": "azureuser"
+        "value": "gauge23"
       },
       "administratorLoginPassword": {
-        "value": "${{g@uge123}}"
+        "value": "${{@Y'?kV%Y%9'g9W}}"
       }
     }
     
